@@ -3,7 +3,13 @@ package rest;
 import fakeDataBase.FakeDataBase;
 import fakeDataBase.Product;
 
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.FileInputStream;
+import java.io.UnsupportedEncodingException;
+import java.io.FileNotFoundException;
+
 import java.util.Set;
 
 
@@ -80,8 +86,10 @@ public class Matcher {
     private static BufferedReader getBufferedReader(String fileName) {
         BufferedReader bufferedReader = null;
         try {
-            bufferedReader = new BufferedReader(new FileReader( fileName + ".txt"));
+            bufferedReader = new BufferedReader(new InputStreamReader(new FileInputStream(fileName + ".txt"), "UTF-8"));
         } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (UnsupportedEncodingException e) {
             e.printStackTrace();
         }
         return bufferedReader;
