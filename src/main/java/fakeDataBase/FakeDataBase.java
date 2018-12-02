@@ -1,8 +1,9 @@
 package fakeDataBase;
 
 import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-import java.io.FileReader;
 import java.io.IOException;
 import java.util.HashSet;
 import java.util.Set;
@@ -16,7 +17,7 @@ public class FakeDataBase {
         Set<Product> products = new HashSet<>();
         try {
             // читаем текстовый файл и парсим из него объекты Product
-            BufferedReader bufferedReader = new BufferedReader(new FileReader("src\\main\\resources\\matrix.txt"));
+            BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(new FileInputStream("matrix.txt"), "UTF-8"));
             while (bufferedReader.ready()) {
                 String row = bufferedReader.readLine();
                 String[] splitRows = row.split("\\t");
